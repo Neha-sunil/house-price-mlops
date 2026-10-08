@@ -153,9 +153,11 @@ with mlflow.start_run():
         print("Model is approved.")
 
         # Save model
-        model_path = BASE_DIR / "models" / "xgboost_house_price_model.json"
-        model.save_model(model_path)
+        models_dir = BASE_DIR / "models"
+        models_dir.mkdir(parents=True, exist_ok=True)
 
+        model_path = models_dir / "xgboost_house_price_model.json"
+        model.save_model(model_path)
         print(f"Model saved to: {model_path}")
 
         # Log model to MLflow
